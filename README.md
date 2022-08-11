@@ -32,7 +32,8 @@ Projeto API desafio CWI Software para utilização como exemplo em treinamentos.
 
 ### Inicialização
 ```shell
-mvn clean install spring-boot: run
+docker-compose up -d --build
+
 ```
 
 A cada inicialização o banco de dados será zerado e o de importação será executado 'import.sql'
@@ -45,7 +46,9 @@ A cada inicialização o banco de dados será zerado e o de importação será e
 - Thymeleaf
 - JUnit
 - Mockito
-- H2
+- Postgres
 - Devtools
 - Lombok
 - ModelMapper
+- Docker
+- Docker compose
