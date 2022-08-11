@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  app-java:
+    build: 
+      dockerfile: Dockerfile
+      context: "."
+    restart: on-failure
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/javaapp
+    
+    depends_on:
+      - postgres
+    ports:
+      - 80:8080
+
+  postgres:
+    image: postgres:9.6
+    environment:
+        - POSTGRES_USER=java
+        - POSTGRES_PASSWORD=app
+        - POSTGRES_DB=javaapp
+    logging:
+        options:
+            max-size: 10m
+            max-file: "3"
+    volumes:
+        - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    #healthcheck:
+    #  test: ["CMD-SHELL", "pg_isready -U javaapp"]
+    #  interval: 10s
+    #  timeout: 5s
+    #  retries: 5
+
+  teste-pgadmin-compose:
+      image: dpage/pgadmin4
+      environment:
+          PGADMIN_DEFAULT_EMAIL: "admin@email.com"
+          PGADMIN_DEFAULT_PASSWORD: "java"
+      ports:
+          - "8088:80"
+                  
+volumes:
+  pgdata:
+
