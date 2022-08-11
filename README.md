@@ -27,8 +27,8 @@ Projeto API desafio CWI Software para utilização como exemplo em treinamentos.
 ### Endereços
 
 - **Documentação Swagger: ** [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
-- **Banco de dados: ** [http://localhost:8080/h2/](http://localhost:8080/h2/)
-- **Página Web: ** [http://localhost:8080/login](http://localhost:8080/login)
+- **Banco de dados: pg-admin ** [http://localhost:8088/](http://localhost:8088/)
+- **Página Web: ** [http://localhost:80/login](http://localhost:80/login)
 
 ### Inicialização
 ```shell
