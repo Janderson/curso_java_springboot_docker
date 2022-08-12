@@ -32,8 +32,8 @@ Projeto API desafio CWI Software para utilização como exemplo em treinamentos.
 
 ### Inicialização
 ```shell
-docker-compose up -d --build
-
+cp .env-template .env
+bash build.sh
 ```
 
 A cada inicialização o banco de dados será zerado e o de importação será executado 'import.sql'
