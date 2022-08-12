@@ -28,3 +28,4 @@ buildNumber.properties
 
 docker-java/*.jar
 target/*.jar
+.env

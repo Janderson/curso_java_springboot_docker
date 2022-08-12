@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
       context: "."
     restart: on-failure
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/javaapp
+    env_file:
+      - .env
     
     depends_on:
       - postgres
@@ -16,14 +16,12 @@ services:
 
   postgres:
     image: postgres:9.6
-    environment:
-        - POSTGRES_USER=java
-        - POSTGRES_PASSWORD=app
-        - POSTGRES_DB=javaapp
     logging:
         options:
             max-size: 10m
             max-file: "3"
+    env_file:
+      - .env
     volumes:
         - pgdata:/var/lib/postgresql/data
     ports:
