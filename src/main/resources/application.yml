@@ -3,8 +3,10 @@ server:
   
 spring:
   jpa:
-     hibernate:
+    hibernate:
       ddl-auto: update
+      hbm2ddl:
+        auto: create
             
   datasource:
     url: jdbc:postgresql://localhost:5432/javaapp

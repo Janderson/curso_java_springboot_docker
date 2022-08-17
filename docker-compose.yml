@@ -8,11 +8,12 @@ services:
     restart: on-failure
     env_file:
       - .env
-    
     depends_on:
       - postgres
     ports:
       - 80:8080
+    volumes:
+      - /home/minhamaquina/dumps:/app/dumps
 
   postgres:
     image: postgres:9.6
@@ -26,17 +27,19 @@ services:
         - pgdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    #healthcheck:
-    #  test: ["CMD-SHELL", "pg_isready -U javaapp"]
-    #  interval: 10s
-    #  timeout: 5s
-    #  retries: 5
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U javaapp"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   teste-pgadmin-compose:
       image: dpage/pgadmin4
       environment:
           PGADMIN_DEFAULT_EMAIL: "admin@email.com"
           PGADMIN_DEFAULT_PASSWORD: "java"
+      depends_on:
+        - app-java
       ports:
           - "8088:80"
                   
